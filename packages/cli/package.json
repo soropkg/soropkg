@@ -1,0 +1,32 @@
+{
+  "name": "soropkg",
+  "version": "0.1.0",
+  "description": "Package manager for Soroban smart contracts on Stellar",
+  "main": "dist/index.js",
+  "bin": {
+    "soropkg": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node src/index.ts",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@soropkg/core": "*",
+    "@stellar/stellar-sdk": "^12.3.0",
+    "@stellar/js-xdr": "*",
+    "@iarna/toml": "^3.0.0",
+    "chalk": "^4.1.2",
+    "commander": "^12.1.0",
+    "ora": "^5.4.1",
+    "prompts": "^2.4.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/prompts": "^2.4.9",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.4.0"
+  },
+  "keywords": ["soroban", "stellar", "smart-contracts", "package-manager"],
+  "license": "Apache-2.0"
+}

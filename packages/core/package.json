@@ -1,0 +1,13 @@
+{
+  "name": "@soropkg/core",
+  "version": "0.1.0",
+  "description": "Shared types and schema for the Soroban contract package registry",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist"
+  },
+  "keywords": ["soroban", "stellar", "smart-contracts"],
+  "license": "Apache-2.0"
+}
