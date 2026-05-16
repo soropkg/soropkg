@@ -1,121 +1,132 @@
 "use client";
+import { CheckCircle } from "lucide-react";
 
 const contracts = [
-  { name: "Blend Protocol", category: "Lending", contracts: 3, audited: true },
-  { name: "Soroswap", category: "DEX / AMM", contracts: 2, audited: false },
-  { name: "Phoenix Protocol", category: "DEX", contracts: 1, audited: false },
-  { name: "Aquarius", category: "Liquidity", contracts: 1, audited: false },
-  { name: "FxDAO", category: "Stablecoin", contracts: 1, audited: false },
-  { name: "Reflector", category: "Oracle", contracts: 1, audited: false },
-  { name: "YieldBlox", category: "Yield", contracts: 1, audited: false },
-  { name: "Centrifuge", category: "RWA", contracts: 1, audited: false },
-  { name: "stellar/token", category: "Standard", contracts: 1, audited: true },
+  { name: "Blend Protocol",  category: "Lending",   count: 3, audited: true  },
+  { name: "Soroswap",        category: "DEX / AMM",  count: 2, audited: false },
+  { name: "Phoenix Protocol",category: "DEX",        count: 1, audited: false },
+  { name: "Aquarius",        category: "Liquidity",  count: 1, audited: false },
+  { name: "FxDAO",           category: "Stablecoin", count: 1, audited: false },
+  { name: "Reflector",       category: "Oracle",     count: 1, audited: false },
+  { name: "YieldBlox",       category: "Yield",      count: 1, audited: false },
+  { name: "Centrifuge",      category: "RWA",        count: 1, audited: false },
+  { name: "stellar/token",   category: "Standard",   count: 1, audited: true  },
 ];
-
-const categoryColors: Record<string, string> = {
-  Lending: "#6e56cf",
-  "DEX / AMM": "#05a2c2",
-  DEX: "#05a2c2",
-  Liquidity: "#3e63dd",
-  Stablecoin: "#30a46c",
-  Oracle: "#9b8afb",
-  Yield: "#ffb224",
-  RWA: "#e5484d",
-  Standard: "#2ec8e6",
-};
 
 export default function Ecosystem() {
   return (
-    <section style={{ padding: "100px 24px" }}>
-      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-        {/* Header */}
-        <div style={{ textAlign: "center", marginBottom: 56 }}>
-          <p style={{ fontSize: 13, fontWeight: 600, color: "#30a46c", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 16 }}>
-            Registry
-          </p>
-          <h2 style={{ fontSize: "clamp(28px, 4vw, 44px)", fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.025em", lineHeight: 1.15 }}>
-            The Stellar ecosystem,<br />all in one place
-          </h2>
-          <p style={{ fontSize: 17, color: "var(--text-secondary)", marginTop: 16, maxWidth: 480, margin: "16px auto 0" }}>
-            soropkg ships with 19+ contracts from the core Stellar ecosystem, ready to add as dependencies.
-          </p>
-        </div>
+    <section id="ecosystem" style={{
+      padding: "100px 32px",
+      borderTop: "1px solid var(--border)",
+    }}>
+      <div style={{ maxWidth: 1140, margin: "0 auto" }}>
 
-        {/* Grid */}
         <div style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
-          gap: 16,
-          marginBottom: 48,
+          gridTemplateColumns: "300px 1fr",
+          gap: 80,
+          alignItems: "start",
         }}>
-          {contracts.map(c => (
-            <div
-              key={c.name}
+          {/* Left */}
+          <div>
+            <p style={{
+              fontSize: 11, fontWeight: 500, letterSpacing: "0.15em",
+              textTransform: "uppercase", color: "var(--yellow)", marginBottom: 20,
+            }}>
+              Registry
+            </p>
+            <h2 className="serif" style={{
+              fontSize: "clamp(26px, 3vw, 38px)", fontWeight: 600,
+              lineHeight: 1.2, letterSpacing: "-0.02em", color: "var(--white)",
+              marginBottom: 20,
+            }}>
+              The Stellar ecosystem, indexed
+            </h2>
+            <p style={{
+              fontSize: 14, color: "var(--text-mid)", lineHeight: 1.75, marginBottom: 32,
+            }}>
+              soropkg ships with 19+ contracts from the core Stellar ecosystem as seed data — ready to add as dependencies on day one.
+            </p>
+            <a href="https://github.com/Ipramking/soropkg" target="_blank" rel="noopener noreferrer"
               style={{
-                background: "var(--bg-card)",
-                border: "1px solid var(--border)",
-                borderRadius: 12,
-                padding: "20px 22px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                transition: "border-color 0.15s, transform 0.15s",
+                display: "inline-flex", alignItems: "center", gap: 6,
+                fontSize: 13, color: "var(--yellow)", textDecoration: "none",
+                borderBottom: "1px solid rgba(253,218,36,0.3)",
+                paddingBottom: 2, transition: "border-color 0.15s",
               }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = "var(--border-accent)"; e.currentTarget.style.transform = "translateY(-2px)"; }}
-              onMouseLeave={e => { e.currentTarget.style.borderColor = "var(--border)"; e.currentTarget.style.transform = "translateY(0)"; }}
+              onMouseEnter={e => e.currentTarget.style.borderColor = "var(--yellow)"}
+              onMouseLeave={e => e.currentTarget.style.borderColor = "rgba(253,218,36,0.3)"}
             >
-              <div>
-                <div style={{ fontSize: 14, fontWeight: 600, color: "var(--text-primary)", marginBottom: 6 }}>
+              Submit your contract →
+            </a>
+          </div>
+
+          {/* Right — table */}
+          <div style={{ border: "1px solid var(--border)" }}>
+            {/* Table header */}
+            <div style={{
+              display: "grid", gridTemplateColumns: "1fr auto auto auto",
+              padding: "10px 20px", borderBottom: "1px solid var(--border)",
+              background: "var(--surface-1)",
+            }}>
+              {["Package", "Category", "Contracts", "Audited"].map(h => (
+                <span key={h} style={{
+                  fontSize: 10, fontWeight: 500, color: "var(--text-lo)",
+                  letterSpacing: "0.1em", textTransform: "uppercase",
+                  textAlign: h !== "Package" ? "center" : "left",
+                }}>{h}</span>
+              ))}
+            </div>
+
+            {contracts.map((c, i) => (
+              <div
+                key={c.name}
+                style={{
+                  display: "grid", gridTemplateColumns: "1fr auto auto auto",
+                  padding: "14px 20px",
+                  borderBottom: i < contracts.length - 1 ? "1px solid var(--border)" : "none",
+                  background: "var(--surface-0)",
+                  alignItems: "center",
+                  transition: "background 0.1s",
+                }}
+                onMouseEnter={e => e.currentTarget.style.background = "var(--surface-1)"}
+                onMouseLeave={e => e.currentTarget.style.background = "var(--surface-0)"}
+              >
+                <span style={{ fontSize: 13, color: "var(--text-hi)", fontWeight: 400 }}>
                   {c.name}
-                </div>
-                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                  <span style={{
-                    fontSize: 11,
-                    fontWeight: 600,
-                    color: categoryColors[c.category] ?? "#6e56cf",
-                    background: `${categoryColors[c.category] ?? "#6e56cf"}15`,
-                    padding: "2px 8px",
-                    borderRadius: 100,
-                    letterSpacing: "0.03em",
-                  }}>
-                    {c.category}
-                  </span>
-                  <span style={{ fontSize: 12, color: "var(--text-muted)" }}>
-                    {c.contracts} contract{c.contracts > 1 ? "s" : ""}
-                  </span>
+                </span>
+                <span style={{
+                  fontSize: 11, color: "var(--lavender)",
+                  textAlign: "center", fontWeight: 400,
+                }}>
+                  {c.category}
+                </span>
+                <span style={{
+                  fontSize: 12, color: "var(--text-lo)",
+                  textAlign: "center",
+                }}>
+                  {c.count}
+                </span>
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                  {c.audited
+                    ? <CheckCircle size={14} strokeWidth={1.5} color="var(--teal)" />
+                    : <span style={{ fontSize: 12, color: "var(--border-hi)" }}>—</span>
+                  }
                 </div>
               </div>
-              {c.audited && (
-                <div title="Audited" style={{
-                  width: 28,
-                  height: 28,
-                  borderRadius: "50%",
-                  background: "rgba(48,164,108,0.12)",
-                  border: "1px solid rgba(48,164,108,0.25)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexShrink: 0,
-                  fontSize: 13,
-                }}>
-                  ✓
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-
-        {/* CTA */}
-        <div style={{ textAlign: "center" }}>
-          <p style={{ fontSize: 14, color: "var(--text-muted)" }}>
-            More protocols coming soon.{" "}
-            <a href="https://github.com/lumenloop/soropkg" target="_blank" rel="noopener noreferrer"
-              style={{ color: "#6e56cf", textDecoration: "none", fontWeight: 500 }}>
-              Submit yours →
-            </a>
-          </p>
+            ))}
+          </div>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 860px) {
+          #ecosystem > div > div {
+            grid-template-columns: 1fr !important;
+            gap: 40px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

@@ -1,64 +1,61 @@
 @import "tailwindcss";
 
 :root {
-  --bg-base: #0f0f0f;
-  --bg-card: #161616;
-  --bg-card-hover: #1c1c1c;
-  --border: #242424;
-  --border-accent: #333333;
-  --text-primary: #ededed;
-  --text-secondary: #a0a0a0;
-  --text-muted: #555555;
-  --lilac: #6e56cf;
-  --lilac-light: #9b8afb;
-  --lilac-dim: rgba(110, 86, 207, 0.15);
-  --teal: #05a2c2;
-  --teal-light: #2ec8e6;
-  --teal-dim: rgba(5, 162, 194, 0.12);
-  --navy: #3e63dd;
-  --green: #30a46c;
+  /* Stellar 2026 official palette */
+  --black:   #0F0F0F;
+  --yellow:  #FDDA24;
+  --white:   #F6F7F8;
+  --warm:    #D6D2C4;
+  --lavender:#B7ACE8;
+  --teal:    #00A7B5;
+  --navy:    #002E5D;
+
+  /* Surface layers */
+  --surface-0: #0F0F0F;
+  --surface-1: #161616;
+  --surface-2: #1E1E1E;
+  --border:    #2A2A2A;
+  --border-hi: #3A3A3A;
+
+  /* Text */
+  --text-hi:  #F6F7F8;
+  --text-mid: #D6D2C4;
+  --text-lo:  #7A7669;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-
 html { scroll-behavior: smooth; }
 
 body {
-  background-color: var(--bg-base);
-  color: var(--text-primary);
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--surface-0);
+  color: var(--text-hi);
+  font-family: 'Inter', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
-  line-height: 1.6;
 }
 
-/* Grid background */
-.grid-bg {
-  background-image:
-    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-  background-size: 60px 60px;
+/* Dot texture — Stellar brand motif */
+.dot-texture {
+  background-image: radial-gradient(circle, rgba(183,172,232,0.18) 1px, transparent 1px);
+  background-size: 20px 20px;
 }
 
-/* Gradient text */
-.gradient-text {
-  background: linear-gradient(135deg, #9b8afb 0%, #2ec8e6 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* Yellow rule — editorial accent */
+.rule-yellow {
+  border-top: 1px solid var(--yellow);
 }
 
-/* Code font */
-.mono { font-family: 'Inconsolata', 'Fira Code', 'JetBrains Mono', monospace; }
+/* Serif display — Lora */
+.serif {
+  font-family: 'Lora', Georgia, serif;
+}
 
-/* Card hover glow */
-.card-glow:hover {
-  box-shadow: 0 0 0 1px var(--border-accent), 0 8px 32px rgba(110, 86, 207, 0.1);
+/* Mono */
+.mono {
+  font-family: 'Inconsolata', 'Fira Code', monospace;
 }
 
 /* Scrollbar */
 ::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: var(--bg-base); }
-::-webkit-scrollbar-thumb { background: var(--border-accent); border-radius: 3px; }
-
-/* Selection */
-::selection { background: rgba(110, 86, 207, 0.3); color: #fff; }
+::-webkit-scrollbar-track { background: var(--surface-0); }
+::-webkit-scrollbar-thumb { background: var(--border-hi); border-radius: 3px; }
+::selection { background: rgba(253,218,36,0.25); }

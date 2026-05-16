@@ -1,126 +1,120 @@
 "use client";
+import { ScanLine, FileText, PackagePlus, Upload, Code2, Search } from "lucide-react";
 
 const features = [
   {
-    icon: "🔍",
+    Icon: ScanLine,
     command: "soropkg inspect",
     title: "Inspect any contract",
     description:
-      "Read the live interface of any deployed Soroban contract directly from the blockchain. No ABI files needed — the spec lives on-chain.",
-    color: "#6e56cf",
-    dim: "rgba(110,86,207,0.1)",
+      "Read the live interface of any deployed Soroban contract from the blockchain. No ABI files — the spec is stored on-chain in the WASM binary.",
   },
   {
-    icon: "📦",
+    Icon: FileText,
     command: "soropkg init",
     title: "Initialize a project",
     description:
-      "Scaffold a soroban.toml manifest for your project. Declare your contract IDs per network and your dependencies in seconds.",
-    color: "#05a2c2",
-    dim: "rgba(5,162,194,0.1)",
+      "Scaffold a soroban.toml manifest interactively. Declare contract IDs per network and your package metadata in under a minute.",
   },
   {
-    icon: "➕",
+    Icon: PackagePlus,
     command: "soropkg add",
     title: "Add dependencies",
     description:
-      "Add a published contract package to your project. soropkg resolves semver ranges and updates your manifest automatically.",
-    color: "#3e63dd",
-    dim: "rgba(62,99,221,0.1)",
+      "Add a published contract package to your project with semver resolution. Your manifest is updated automatically.",
   },
   {
-    icon: "📤",
+    Icon: Upload,
     command: "soropkg publish",
     title: "Publish packages",
     description:
-      "Publish your contract to the registry with GitHub OAuth. On-chain WASM hash verification ensures binaries match what's deployed.",
-    color: "#9b8afb",
-    dim: "rgba(155,138,251,0.1)",
+      "Publish to the registry via GitHub OAuth. On-chain WASM hash verification ensures your binary matches what's actually deployed.",
   },
   {
-    icon: "⚡",
+    Icon: Code2,
     command: "soropkg generate",
     title: "Generate TypeScript clients",
     description:
-      "Auto-generate fully-typed TypeScript bindings for any contract package. No manual ABI parsing — just import and call.",
-    color: "#2ec8e6",
-    dim: "rgba(46,200,230,0.1)",
+      "Auto-generate fully-typed TypeScript bindings for any installed contract package. No manual parsing required.",
   },
   {
-    icon: "🔎",
+    Icon: Search,
     command: "soropkg search",
     title: "Search the registry",
     description:
-      "Full-text search across the entire registry. Find contracts by name, category, or protocol. Filter by network availability.",
-    color: "#30a46c",
-    dim: "rgba(48,164,108,0.1)",
+      "Full-text search across the entire registry. Find contracts by name, category, or protocol, and filter by network availability.",
   },
 ];
 
 export default function Features() {
   return (
-    <section id="features" style={{ padding: "100px 24px", maxWidth: 1100, margin: "0 auto" }}>
-      {/* Header */}
-      <div style={{ textAlign: "center", marginBottom: 64 }}>
-        <p style={{ fontSize: 13, fontWeight: 600, color: "#6e56cf", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 16 }}>
-          Everything you need
-        </p>
-        <h2 style={{ fontSize: "clamp(28px, 4vw, 44px)", fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.025em", lineHeight: 1.15 }}>
-          A complete toolchain for<br />Soroban development
-        </h2>
-        <p style={{ fontSize: 17, color: "var(--text-secondary)", marginTop: 16, maxWidth: 520, margin: "16px auto 0" }}>
-          From discovery to deployment — soropkg gives you the same ergonomics you expect from modern package managers, built natively for smart contracts.
-        </p>
-      </div>
+    <section id="features" style={{ padding: "100px 32px", borderTop: "1px solid var(--border)" }}>
+      <div style={{ maxWidth: 1140, margin: "0 auto" }}>
 
-      {/* Grid */}
-      <div style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
-        gap: 20,
-      }}>
-        {features.map(f => (
-          <div
-            key={f.command}
-            className="card-glow"
-            style={{
-              background: "var(--bg-card)",
-              border: "1px solid var(--border)",
-              borderRadius: 16,
-              padding: "28px 28px 32px",
-              transition: "transform 0.2s, border-color 0.2s",
-              cursor: "default",
-            }}
-            onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-3px)"; e.currentTarget.style.borderColor = "var(--border-accent)"; }}
-            onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.borderColor = "var(--border)"; }}
-          >
-            <div style={{
-              width: 44,
-              height: 44,
-              borderRadius: 10,
-              background: f.dim,
-              border: `1px solid ${f.color}30`,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: 20,
-              marginBottom: 20,
-            }}>
-              {f.icon}
+        {/* Header */}
+        <div style={{ marginBottom: 64, maxWidth: 560 }}>
+          <p style={{
+            fontSize: 11, fontWeight: 500, letterSpacing: "0.15em",
+            textTransform: "uppercase", color: "var(--yellow)", marginBottom: 20,
+          }}>
+            Features
+          </p>
+          <h2 className="serif" style={{
+            fontSize: "clamp(28px, 3.5vw, 44px)", fontWeight: 600,
+            lineHeight: 1.15, letterSpacing: "-0.02em", color: "var(--white)",
+          }}>
+            A complete toolchain<br />for Soroban development
+          </h2>
+        </div>
+
+        {/* Grid */}
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))",
+          gap: 1,
+          background: "var(--border)",
+          border: "1px solid var(--border)",
+        }}>
+          {features.map(({ Icon, command, title, description }) => (
+            <div
+              key={command}
+              style={{
+                background: "var(--surface-0)", padding: "36px 36px 40px",
+                transition: "background 0.15s",
+              }}
+              onMouseEnter={e => (e.currentTarget.style.background = "var(--surface-1)")}
+              onMouseLeave={e => (e.currentTarget.style.background = "var(--surface-0)")}
+            >
+              <div style={{
+                width: 40, height: 40, marginBottom: 24,
+                display: "flex", alignItems: "center", justifyContent: "center",
+              }}>
+                <Icon size={22} strokeWidth={1.5} color="var(--yellow)" />
+              </div>
+
+              <code className="mono" style={{
+                fontSize: 11, color: "var(--lavender)",
+                letterSpacing: "0.04em", fontWeight: 400,
+              }}>
+                {command}
+              </code>
+
+              <h3 style={{
+                fontFamily: "'Lora', serif", fontSize: 18, fontWeight: 600,
+                color: "var(--white)", marginTop: 10, marginBottom: 12,
+                lineHeight: 1.25, letterSpacing: "-0.01em",
+              }}>
+                {title}
+              </h3>
+
+              <p style={{
+                fontSize: 14, color: "var(--text-mid)", lineHeight: 1.7, fontWeight: 400,
+              }}>
+                {description}
+              </p>
             </div>
-
-            <code className="mono" style={{ fontSize: 12, color: f.color, fontWeight: 600, letterSpacing: "0.02em" }}>
-              {f.command}
-            </code>
-
-            <h3 style={{ fontSize: 17, fontWeight: 600, color: "var(--text-primary)", marginTop: 8, marginBottom: 10, letterSpacing: "-0.01em" }}>
-              {f.title}
-            </h3>
-            <p style={{ fontSize: 14, color: "var(--text-secondary)", lineHeight: 1.65 }}>
-              {f.description}
-            </p>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );
