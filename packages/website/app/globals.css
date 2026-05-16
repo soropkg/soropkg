@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+:root {
+  --bg-base: #0f0f0f;
+  --bg-card: #161616;
+  --bg-card-hover: #1c1c1c;
+  --border: #242424;
+  --border-accent: #333333;
+  --text-primary: #ededed;
+  --text-secondary: #a0a0a0;
+  --text-muted: #555555;
+  --lilac: #6e56cf;
+  --lilac-light: #9b8afb;
+  --lilac-dim: rgba(110, 86, 207, 0.15);
+  --teal: #05a2c2;
+  --teal-light: #2ec8e6;
+  --teal-dim: rgba(5, 162, 194, 0.12);
+  --navy: #3e63dd;
+  --green: #30a46c;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+}
+
+/* Grid background */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #9b8afb 0%, #2ec8e6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Code font */
+.mono { font-family: 'Inconsolata', 'Fira Code', 'JetBrains Mono', monospace; }
+
+/* Card hover glow */
+.card-glow:hover {
+  box-shadow: 0 0 0 1px var(--border-accent), 0 8px 32px rgba(110, 86, 207, 0.1);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg-base); }
+::-webkit-scrollbar-thumb { background: var(--border-accent); border-radius: 3px; }
+
+/* Selection */
+::selection { background: rgba(110, 86, 207, 0.3); color: #fff; }
