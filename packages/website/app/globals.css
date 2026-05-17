@@ -59,3 +59,116 @@ body {
 ::-webkit-scrollbar-track { background: var(--surface-0); }
 ::-webkit-scrollbar-thumb { background: var(--border-hi); border-radius: 3px; }
 ::selection { background: rgba(253,218,36,0.25); }
+
+/* ── Responsive layout utilities ───────────────────────── */
+
+.section-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Two-column grid that stacks on mobile */
+.grid-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+/* Ecosystem sidebar + table */
+.grid-sidebar {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+/* Nav links — hide on small screens */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Install command — allow wrapping */
+.install-cmd {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  background: var(--surface-1);
+  border: 1px solid var(--border-hi);
+  border-radius: 6px;
+  overflow: hidden;
+  max-width: 100%;
+  flex-wrap: nowrap;
+}
+
+/* CTA buttons row */
+.btn-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Stats row */
+.stats-row {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Features grid */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+/* Ecosystem table grid */
+.eco-table-row {
+  display: grid;
+  grid-template-columns: 1fr 120px 80px 60px;
+  padding: 14px 20px;
+  align-items: center;
+}
+.eco-table-header {
+  display: grid;
+  grid-template-columns: 1fr 120px 80px 60px;
+  padding: 10px 20px;
+}
+
+@media (max-width: 900px) {
+  .grid-2col {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    direction: ltr !important;
+  }
+  .grid-sidebar {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .features-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .section-inner { padding: 0 16px; }
+  .features-grid { grid-template-columns: 1fr; }
+  .nav-links a:not(:last-child) { display: none; }
+  .grid-2col { gap: 32px; }
+  .stats-row { gap: 28px; }
+  .eco-table-row,
+  .eco-table-header {
+    grid-template-columns: 1fr 100px 50px;
+  }
+  /* hide Audited column on very small screens */
+  .eco-table-row > *:last-child,
+  .eco-table-header > *:last-child { display: none; }
+  .install-cmd code { font-size: 13px; }
+}

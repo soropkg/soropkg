@@ -1,0 +1,95 @@
+---
+title: soroban.toml
+description: Complete reference for the soroban.toml manifest file
+---
+
+import { Callout } from 'nextra/components'
+
+# soroban.toml
+
+`soroban.toml` is the project manifest — the single source of truth for your package metadata, deployed contract addresses, and dependencies. It lives in the root of your project directory.
+
+---
+
+## Full example
+
+```toml filename="soroban.toml"
+[package]
+name        = "my-org/my-protocol"
+version     = "1.0.0"
+description = "A brief description of what this protocol does"
+license     = "Apache-2.0"
+repository  = "https://github.com/my-org/my-protocol"
+homepage    = "https://my-protocol.xyz"
+keywords    = ["defi", "lending"]
+
+[networks.mainnet]
+vault        = "CCVAULTMAINNET..."
+pool         = "CCPOOLMAINNET..."
+
+[networks.testnet]
+vault        = "CCVAULTTESTNET..."
+pool         = "CCPOOLTESTNET..."
+
+[networks.futurenet]
+vault        = "CCVAULTFUTURENET..."
+
+[dependencies]
+"stellar/token"       = "1.0.0"
+"blend-capital/blend" = "^2.0.0"
+
+[dev-dependencies]
+"stellar/token" = "1.0.0"
+```
+
+---
+
+## `[package]`
+
+| Field | Required | Description |
+|---|---|---|
+| `name` | Yes | `org/package` — must match your GitHub identity for publishing |
+| `version` | Yes | Semver version string |
+| `description` | No | Short description shown in search results |
+| `license` | No | SPDX license identifier |
+| `repository` | No | GitHub repository URL |
+| `homepage` | No | Project website |
+| `keywords` | No | Array of search tags |
+
+---
+
+## `[networks.<network>]`
+
+Declare your deployed contract addresses per network. Keys are arbitrary and represent the contracts in your package. Values are `C...` Stellar contract addresses.
+
+```toml
+[networks.mainnet]
+vault = "CCVAULTMAINNET..."
+pool  = "CCPOOLMAINNET..."
+```
+
+Supported networks: `mainnet`, `testnet`, `futurenet`.
+
+---
+
+## `[dependencies]`
+
+Packages your project depends on, keyed by `org/name` with a semver range as the value.
+
+```toml
+[dependencies]
+"stellar/token"       = "1.0.0"
+"blend-capital/blend" = "^2.0.0"
+```
+
+---
+
+## `[dev-dependencies]`
+
+Same format as `[dependencies]`, but only used during development (not included in published packages).
+
+---
+
+<Callout>
+  Package names must follow the `org/name` format. The `org` portion must match your GitHub username or organisation when publishing.
+</Callout>

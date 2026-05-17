@@ -1,0 +1,109 @@
+---
+title: Contributing
+description: How to contribute to soropkg
+---
+
+import { Callout, Steps } from 'nextra/components'
+
+# Contributing
+
+soropkg is open source and welcomes contributions of all kinds — bug reports, documentation improvements, new features, and registry additions.
+
+---
+
+## Repository structure
+
+```
+soropkg/
+├── packages/
+│   ├── core/        # Core logic: WASM parsing, spec reading, type generation
+│   ├── cli/         # CLI entry point and command handlers
+│   ├── registry/    # Registry server and seed data
+│   ├── website/     # Marketing landing page (Next.js)
+│   └── docs/        # This documentation site (Nextra)
+├── seeds/           # Seed contract data for the registry
+└── package.json     # Root workspace
+```
+
+---
+
+## Getting started
+
+<Steps>
+
+### Clone the repository
+
+```bash
+git clone https://github.com/Ipramking/soropkg.git
+cd soropkg
+```
+
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Build all packages
+
+```bash
+npm run build
+```
+
+### Run the CLI locally
+
+```bash
+node packages/cli/dist/index.js --help
+```
+
+</Steps>
+
+---
+
+## Adding a contract to the registry
+
+The fastest way to contribute is to add a Soroban contract package to the seed data.
+
+1. Find the deployed contract address(es) on [StellarExpert](https://stellar.expert)
+2. Create a new entry in `seeds/` following the existing format
+3. Run `soropkg inspect <address>` to verify the interface parses correctly
+4. Open a pull request with a description of the protocol
+
+---
+
+## Reporting bugs
+
+Open an issue on [GitHub](https://github.com/Ipramking/soropkg/issues) with:
+
+- soropkg version (`soropkg --version`)
+- The command you ran
+- The full error output
+- Expected vs actual behaviour
+
+---
+
+## Submitting changes
+
+<Steps>
+
+### Fork and branch
+
+```bash
+git checkout -b feat/my-feature
+```
+
+### Make your changes and commit
+
+Follow the existing commit message style — short imperative subject line, no co-authors.
+
+### Open a pull request
+
+Describe what you changed and why. Link any relevant issues.
+
+</Steps>
+
+---
+
+<Callout>
+  For large features or architectural changes, open an issue first to discuss the approach before investing time in an implementation.
+</Callout>

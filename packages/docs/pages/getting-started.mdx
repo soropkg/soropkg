@@ -1,0 +1,147 @@
+---
+title: Getting Started
+description: Install soropkg and set up your first Soroban project in minutes
+---
+
+import { Callout, Steps, Tabs, Tab } from 'nextra/components'
+
+# Getting Started
+
+This guide walks you through installing soropkg and setting up your first project.
+
+---
+
+## Requirements
+
+- **Node.js** 18 or higher
+- **npm** 8 or higher
+- A Soroban project (or an existing contract address to inspect)
+
+---
+
+## Installation
+
+Install the CLI globally via npm:
+
+```bash
+npm install -g soropkg
+```
+
+Verify the installation:
+
+```bash
+soropkg --version
+# soropkg/0.x.x
+```
+
+---
+
+## Your first project
+
+<Steps>
+
+### Initialise a manifest
+
+Run `soropkg init` inside your project directory. It will ask a few questions and generate a `soroban.toml` file.
+
+```bash
+cd my-protocol
+soropkg init
+```
+
+```
+? Package name (org/name): my-org/my-protocol
+? Version: 1.0.0
+? Description: My first Soroban protocol
+? License: Apache-2.0
+? Repository URL: https://github.com/my-org/my-protocol
+
+✓  Created soroban.toml
+```
+
+### Add contract IDs for each network
+
+Edit the generated `soroban.toml` to add your deployed contract addresses:
+
+```toml
+[package]
+name        = "my-org/my-protocol"
+version     = "1.0.0"
+description = "My first Soroban protocol"
+license     = "Apache-2.0"
+repository  = "https://github.com/my-org/my-protocol"
+
+[networks.mainnet]
+vault = "CCVAULTMAINNET..."
+
+[networks.testnet]
+vault = "CCVAULTTESTNET..."
+```
+
+### Add a dependency
+
+Search the registry and add a dependency using semver:
+
+```bash
+soropkg add stellar/token@1.0.0
+soropkg add blend-capital/blend@^2.0.0
+```
+
+Your `soroban.toml` is updated automatically:
+
+```toml
+[dependencies]
+"stellar/token"       = "1.0.0"
+"blend-capital/blend" = "^2.0.0"
+```
+
+### Generate TypeScript clients
+
+Generate fully-typed TypeScript bindings for every installed dependency:
+
+```bash
+soropkg generate
+```
+
+```
+✓  stellar__token.ts
+✓  blend_capital__blend.ts
+
+Written to .soroban/
+```
+
+Import and use them directly:
+
+```typescript
+import { Client as TokenClient } from '.soroban/stellar__token'
+
+const token = new TokenClient({ contractId: 'C...' })
+const balance = await token.balance({ id: 'GABC...' })
+```
+
+</Steps>
+
+---
+
+## Networks
+
+soropkg supports all three Stellar networks:
+
+| Network    | Flag          | Description                     |
+|------------|---------------|---------------------------------|
+| `mainnet`  | `--mainnet`   | Production (default)            |
+| `testnet`  | `--testnet`   | Public test network             |
+| `futurenet`| `--futurenet` | Experimental pre-release network|
+
+Pass the network flag to any command:
+
+```bash
+soropkg inspect --testnet CABC123...
+soropkg add --testnet stellar/token@1.0.0
+```
+
+---
+
+<Callout type="tip">
+  Run `soropkg --help` at any time to see all available commands and flags.
+</Callout>

@@ -1,0 +1,67 @@
+---
+title: soropkg init
+description: Initialise a soroban.toml manifest for your project
+---
+
+import { Callout } from 'nextra/components'
+
+# soropkg init
+
+Scaffold a `soroban.toml` manifest for your project interactively.
+
+```bash
+soropkg init [flags]
+```
+
+---
+
+## Flags
+
+| Flag | Description |
+|---|---|
+| `--yes`, `-y` | Skip prompts and generate with defaults |
+
+---
+
+## Interactive prompts
+
+Running `soropkg init` without flags will walk you through:
+
+```
+? Package name (org/name): my-org/my-protocol
+? Version: 1.0.0
+? Description: My Soroban protocol
+? License: Apache-2.0
+? Repository URL: https://github.com/my-org/my-protocol
+
+✓  Created soroban.toml
+```
+
+---
+
+## Generated file
+
+```toml filename="soroban.toml"
+[package]
+name        = "my-org/my-protocol"
+version     = "1.0.0"
+description = "My Soroban protocol"
+license     = "Apache-2.0"
+repository  = "https://github.com/my-org/my-protocol"
+
+# Add your deployed contract addresses here
+[networks.mainnet]
+# vault = "CC..."
+
+[networks.testnet]
+# vault = "CC..."
+
+[dependencies]
+# "stellar/token" = "1.0.0"
+```
+
+---
+
+<Callout>
+  See the [soroban.toml reference](/concepts/manifest) for the full schema including all supported fields.
+</Callout>

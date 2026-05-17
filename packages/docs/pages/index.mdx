@@ -1,0 +1,64 @@
+---
+title: Introduction
+description: soropkg — the package manager for Soroban smart contracts on Stellar
+---
+
+import { Callout } from 'nextra/components'
+
+# soropkg
+
+**soropkg** is a package manager for [Soroban](https://developers.stellar.org/docs/build/smart-contracts/overview) smart contracts on the Stellar blockchain. Think of it as npm, but for on-chain contracts.
+
+It lets you discover, install, publish, and inspect smart contract packages — and generate fully-typed TypeScript clients — all from a single CLI.
+
+```bash
+npm install -g soropkg
+```
+
+---
+
+## Why soropkg?
+
+Soroban stores contract interface specs directly inside the deployed WASM binary on-chain. soropkg reads those specs directly from the network, so there are no separate ABI files to manage or keep in sync.
+
+It brings the ergonomics of a modern package manager to smart contract development:
+
+- **No ABI files.** Contract interfaces live on-chain. soropkg reads them directly.
+- **Semver dependency management.** Declare contract dependencies in a `soroban.toml` manifest and let soropkg resolve versions.
+- **Type-safe clients.** Generate TypeScript bindings for any installed package with one command.
+- **On-chain verification.** Published packages are verified against the WASM hash of the actual deployed contract.
+
+---
+
+## Quick example
+
+```bash
+# Initialise a new project
+soropkg init
+
+# Add a dependency
+soropkg add blend-capital/blend@^2.0.0
+
+# Generate TypeScript clients for all dependencies
+soropkg generate
+
+# Inspect any live contract
+soropkg inspect CAQQR5SWBXKIGZKPBZDH3KM5GQ5G...
+```
+
+---
+
+## Where to go next
+
+| | |
+|---|---|
+| [Getting Started →](/getting-started) | Install soropkg and scaffold your first project |
+| [CLI Reference →](/cli) | Full reference for every command and flag |
+| [Concepts →](/concepts) | How on-chain specs, the registry, and WASM verification work |
+| [Contributing →](/contributing) | Add contracts to the registry or contribute code |
+
+---
+
+<Callout type="info">
+  soropkg is in active development. The registry and CLI are functional, and new features are being added regularly. Contributions are welcome — see the [Contributing](/contributing) guide.
+</Callout>

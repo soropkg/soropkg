@@ -1,0 +1,46 @@
+---
+title: CLI Reference
+description: Complete reference for all soropkg CLI commands
+---
+
+# CLI Reference
+
+soropkg is a command-line tool. All commands follow the pattern:
+
+```bash
+soropkg <command> [arguments] [flags]
+```
+
+---
+
+## Commands
+
+| Command | Description |
+|---|---|
+| [`inspect`](/cli/inspect) | Read the interface of a deployed contract |
+| [`init`](/cli/init) | Initialise a `soroban.toml` manifest |
+| [`add`](/cli/add) | Add a contract dependency |
+| [`publish`](/cli/publish) | Publish a package to the registry |
+| [`generate`](/cli/generate) | Generate TypeScript clients for dependencies |
+| [`search`](/cli/search) | Search the registry |
+
+---
+
+## Global flags
+
+These flags are available on every command:
+
+| Flag | Description |
+|---|---|
+| `--mainnet` | Use Stellar mainnet (default) |
+| `--testnet` | Use Stellar testnet |
+| `--futurenet` | Use Stellar futurenet |
+| `--verbose`, `-v` | Enable verbose output |
+| `--help`, `-h` | Show help |
+| `--version` | Print version |
+
+---
+
+## Configuration
+
+soropkg reads configuration from `soroban.toml` in the current working directory. See [soroban.toml reference](/concepts/manifest) for the full schema.

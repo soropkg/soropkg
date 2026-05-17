@@ -1,0 +1,67 @@
+/* Stellar 2026 brand — Nextra v3 overrides */
+
+body {
+  font-family: 'Inter', system-ui, sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Headings — Lora serif */
+h1, h2, h3 {
+  font-family: 'Lora', Georgia, serif !important;
+  letter-spacing: -0.02em !important;
+  font-weight: 600 !important;
+}
+
+/* Yellow rule under h1 — Stellar editorial motif */
+article h1:first-of-type {
+  padding-bottom: 18px;
+  border-bottom: 1px solid #FDDA24 !important;
+  margin-bottom: 24px !important;
+}
+
+/* Code */
+code, pre, kbd {
+  font-family: 'Inconsolata', 'Fira Code', monospace !important;
+}
+
+/* Inline code */
+html.dark code:not(pre code) {
+  background: rgba(183, 172, 232, 0.1) !important;
+  border: 1px solid rgba(183, 172, 232, 0.18) !important;
+  color: #B7ACE8 !important;
+  padding: 1px 5px !important;
+  border-radius: 3px !important;
+}
+
+/* Nextra primary color → Stellar yellow (hue 47) */
+:root {
+  --nextra-primary-hue: 47deg;
+}
+
+/* Yellow rule top of navbar */
+.nextra-nav-container {
+  border-top: 2px solid #FDDA24 !important;
+}
+
+/* Active sidebar item */
+.nextra-sidebar-container li a[aria-current="page"] {
+  color: #FDDA24 !important;
+  background: rgba(253, 218, 36, 0.07) !important;
+}
+
+/* Table headers */
+th {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 11px !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  font-weight: 500 !important;
+}
+
+/* Selection */
+::selection { background: rgba(253, 218, 36, 0.2); }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #0F0F0F; }
+::-webkit-scrollbar-thumb { background: #2A2A2A; border-radius: 3px; }

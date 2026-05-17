@@ -1,0 +1,92 @@
+---
+title: soropkg inspect
+description: Read the live interface of any deployed Soroban contract
+---
+
+import { Callout } from 'nextra/components'
+
+# soropkg inspect
+
+Read the live interface of any deployed Soroban contract directly from the blockchain.
+
+```bash
+soropkg inspect <contract-address> [flags]
+```
+
+soropkg fetches the WASM binary from the network, parses the embedded `contractspecv0` section, and prints a structured view of the contract's public interface — functions, argument types, return types, and custom error codes.
+
+No ABI files or separate metadata needed.
+
+---
+
+## Arguments
+
+| Argument | Required | Description |
+|---|---|---|
+| `<contract-address>` | Yes | The `C...` Stellar contract address to inspect |
+
+---
+
+## Flags
+
+| Flag | Description |
+|---|---|
+| `--mainnet` | Inspect on mainnet (default) |
+| `--testnet` | Inspect on testnet |
+| `--futurenet` | Inspect on futurenet |
+| `--json` | Output raw JSON instead of formatted text |
+
+---
+
+## Example
+
+```bash
+soropkg inspect CAQQR5SWBXKIGZKPBZDH3KM5GQ5GEHLY6ZZLLVFJTKL6KOFAAB22LWY
+```
+
+```
+Contract   blend-capital/backstop
+Network    mainnet
+WASM hash  8a3fc1d2e7b9f04a5c3e8d1b6f2a9e4c7d0b3f5a8e1c4d7b0a3f6e9c2d5b8a
+
+Functions
+  deposit(from: Address, pool: Address, amount: i128) → i128
+  withdraw(from: Address, pool: Address, amount: i128) → i128
+  queue_withdrawal(from: Address, pool: Address, amount: i128)
+  dequeue_withdrawal(from: Address, pool: Address, amount: i128)
+  claim(from: Address, pool_addresses: Vec<Address>) → i128
+
+Errors
+  1  InvalidShareMintAmount
+  2  InvalidTokenWithdrawAmount
+  3  InsufficientFunds
+  4  NotExpired
+```
+
+---
+
+## JSON output
+
+Use `--json` to get machine-readable output suitable for piping:
+
+```bash
+soropkg inspect CAQQR5S... --json | jq '.functions[0]'
+```
+
+```json
+{
+  "name": "deposit",
+  "inputs": [
+    { "name": "from",   "type": "Address" },
+    { "name": "pool",   "type": "Address" },
+    { "name": "amount", "type": "i128" }
+  ],
+  "output": "i128"
+}
+```
+
+---
+
+<Callout type="info">
+  The interface is read directly from the **live deployed WASM** on the specified network. If a contract has been upgraded since it was published to the registry, `inspect` will always show the current live interface.
+</Callout>

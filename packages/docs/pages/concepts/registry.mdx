@@ -1,0 +1,54 @@
+---
+title: Registry
+description: How the soropkg registry works
+---
+
+import { Callout } from 'nextra/components'
+
+# Registry
+
+The soropkg registry is the central index of published Soroban contract packages. It stores package metadata, contract specs, and verified WASM hashes — but **not the WASM binaries themselves**. Those live on-chain.
+
+---
+
+## Seed packages
+
+soropkg ships with 19+ contracts from the core Stellar ecosystem pre-loaded as seed data. These are available immediately without any publishing step.
+
+| Package | Category | Networks |
+|---|---|---|
+| `stellar/token` | Standard | mainnet, testnet |
+| `blend-capital/blend` | Lending | mainnet, testnet |
+| `blend-capital/backstop` | Lending | mainnet, testnet |
+| `blend-capital/pool` | Lending | mainnet, testnet |
+| `soroswap/router` | DEX / AMM | mainnet, testnet |
+| `soroswap/pair` | DEX / AMM | mainnet, testnet |
+| `phoenix/multihop` | DEX | mainnet, testnet |
+| `aquarius/liquidity-pool` | Liquidity | mainnet |
+| `fxdao/usdt` | Stablecoin | mainnet, testnet |
+| `reflector/oracle` | Oracle | mainnet |
+| `yieldblox/protocol` | Yield | testnet |
+| `centrifuge/pool` | RWA | mainnet |
+
+---
+
+## Publishing a package
+
+See [`soropkg publish`](/cli/publish) for the full publishing workflow. In summary:
+
+1. Authenticate with your GitHub identity
+2. soropkg verifies your deployed WASM matches the declared package version
+3. Metadata and contract spec are stored in the registry
+4. The package becomes searchable and installable
+
+---
+
+## Package ownership
+
+Package names are namespaced to GitHub identities. `my-org/my-protocol` can only be published by the GitHub user or organisation `my-org`. This prevents name squatting and impersonation.
+
+---
+
+<Callout type="info">
+  The registry itself is open source and part of the soropkg monorepo at [`packages/registry`](https://github.com/Ipramking/soropkg/tree/main/packages/registry).
+</Callout>

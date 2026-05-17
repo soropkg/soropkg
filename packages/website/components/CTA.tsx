@@ -9,115 +9,64 @@ const GithubIcon = () => (
 
 export default function CTA() {
   return (
-    <section style={{
-      padding: "100px 32px",
-      borderTop: "1px solid var(--border)",
-      background: "var(--surface-1)",
-    }}>
-      <div style={{ maxWidth: 1140, margin: "0 auto" }}>
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: 80, alignItems: "center",
-        }}>
-          {/* Left — text */}
+    <section style={{ padding: "100px 0", borderTop: "1px solid var(--border)", background: "var(--surface-1)" }}>
+      <div className="section-inner">
+        <div className="grid-2col">
+          {/* Left */}
           <div>
             <div style={{ width: 40, height: 2, background: "var(--yellow)", marginBottom: 32 }} />
-            <h2 className="serif" style={{
-              fontSize: "clamp(28px, 3.5vw, 48px)", fontWeight: 600,
-              lineHeight: 1.1, letterSpacing: "-0.02em",
-              color: "var(--white)", marginBottom: 20,
-            }}>
+            <h2 className="serif" style={{ fontSize: "clamp(26px, 3.5vw, 44px)", fontWeight: 600, lineHeight: 1.1, letterSpacing: "-0.02em", color: "var(--white)", marginBottom: 20 }}>
               Ready to build<br />on Stellar?
             </h2>
-            <p style={{
-              fontSize: 16, color: "var(--text-mid)", lineHeight: 1.75,
-              marginBottom: 40, maxWidth: 400,
-            }}>
+            <p style={{ fontSize: 16, color: "var(--text-mid)", lineHeight: 1.75, marginBottom: 40, maxWidth: 420 }}>
               Install soropkg and start managing smart contract dependencies the way you manage npm packages — with on-chain verification and full type safety.
             </p>
-            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-              <a href="#" style={{
-                display: "inline-flex", alignItems: "center", gap: 8,
-                padding: "11px 24px", borderRadius: 4,
-                background: "var(--yellow)", color: "#0F0F0F",
-                textDecoration: "none", fontSize: 14, fontWeight: 600,
-                transition: "opacity 0.15s",
-              }}
+            <div className="btn-row">
+              <a href="#" style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "11px 24px", borderRadius: 4, background: "var(--yellow)", color: "#0F0F0F", textDecoration: "none", fontSize: 14, fontWeight: 600, transition: "opacity 0.15s" }}
                 onMouseEnter={e => e.currentTarget.style.opacity = "0.88"}
                 onMouseLeave={e => e.currentTarget.style.opacity = "1"}
               >
-                Read the docs
-                <ArrowRight size={14} strokeWidth={2.5} />
+                Read the docs <ArrowRight size={14} strokeWidth={2.5} />
               </a>
-              <a href="https://github.com/Ipramking/soropkg" target="_blank" rel="noopener noreferrer" style={{
-                display: "inline-flex", alignItems: "center", gap: 8,
-                padding: "11px 24px", borderRadius: 4,
-                background: "transparent", color: "var(--text-hi)",
-                textDecoration: "none", fontSize: 14, fontWeight: 400,
-                border: "1px solid var(--border-hi)", transition: "border-color 0.15s",
-              }}
+              <a href="https://github.com/Ipramking/soropkg" target="_blank" rel="noopener noreferrer"
+                style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "11px 24px", borderRadius: 4, background: "transparent", color: "var(--text-hi)", textDecoration: "none", fontSize: 14, fontWeight: 400, border: "1px solid var(--border-hi)", transition: "border-color 0.15s" }}
                 onMouseEnter={e => e.currentTarget.style.borderColor = "var(--warm)"}
                 onMouseLeave={e => e.currentTarget.style.borderColor = "var(--border-hi)"}
               >
-                <GithubIcon />
-                Star on GitHub
+                <GithubIcon /> Star on GitHub
               </a>
             </div>
           </div>
 
           {/* Right — terminal */}
-          <div style={{
-            background: "var(--surface-0)",
-            border: "1px solid var(--border-hi)", borderRadius: 4,
-          }}>
-            <div style={{
-              padding: "10px 16px", borderBottom: "1px solid var(--border)",
-              display: "flex", alignItems: "center", gap: 8,
-            }}>
-              <div style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--border-hi)" }} />
-              <div style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--border-hi)" }} />
-              <div style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--border-hi)" }} />
+          <div style={{ background: "var(--surface-0)", border: "1px solid var(--border-hi)", borderRadius: 4, overflow: "hidden" }}>
+            <div style={{ padding: "10px 16px", borderBottom: "1px solid var(--border)", display: "flex", alignItems: "center", gap: 8 }}>
+              {[0,1,2].map(i => <div key={i} style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--border-hi)" }} />)}
             </div>
-            <pre className="mono" style={{
-              padding: "24px 24px 28px",
-              fontSize: 13, lineHeight: 1.8,
-              color: "var(--text-mid)", margin: 0, whiteSpace: "pre",
-            }}>
+            <pre className="mono" style={{ padding: "22px 22px 26px", fontSize: 13, lineHeight: 1.8, color: "var(--text-mid)", margin: 0, whiteSpace: "pre", overflowX: "auto" }}>
               {[
-                ["$", " npm install -g soropkg", "yellow"],
+                ["$", " npm install -g soropkg", "y"],
                 ["", "", ""],
-                ["$", " soropkg init", "yellow"],
-                ["  ✓", "  Created soroban.toml", "teal"],
+                ["$", " soropkg init", "y"],
+                ["  ✓", "  Created soroban.toml", "t"],
                 ["", "", ""],
-                ["$", " soropkg add blend-capital/blend@^2", "yellow"],
-                ["  ✓", "  Resolved blend-capital/blend@2.0.0", "teal"],
-                ["  ✓", "  Updated soroban.toml", "teal"],
+                ["$", " soropkg add blend-capital/blend@^2", "y"],
+                ["  ✓", "  Resolved blend-capital/blend@2.0.1", "t"],
+                ["  ✓", "  Updated soroban.toml", "t"],
                 ["", "", ""],
-                ["$", " soropkg generate", "yellow"],
-                ["  ✓", "  blend_capital__blend.ts", "teal"],
+                ["$", " soropkg generate", "y"],
+                ["  ✓", "  blend_capital__blend.ts", "t"],
               ].map(([prefix, rest, color], i) => (
                 <span key={i} style={{ display: "block" }}>
-                  {color === "yellow"
-                    ? <><span style={{ color: "var(--yellow)" }}>{prefix}</span>{rest}</>
-                    : color === "teal"
-                    ? <span style={{ color: "var(--teal)" }}>{prefix}{rest}</span>
-                    : <span>{prefix}{rest}</span>
-                  }
+                  {color === "y" ? <><span style={{ color: "var(--yellow)" }}>{prefix}</span>{rest}</>
+                    : color === "t" ? <span style={{ color: "var(--teal)" }}>{prefix}{rest}</span>
+                    : <span>{prefix}{rest}</span>}
                 </span>
               ))}
             </pre>
           </div>
         </div>
       </div>
-
-      <style>{`
-        @media (max-width: 768px) {
-          section > div > div[style*="grid-template-columns: 1fr 1fr"] {
-            grid-template-columns: 1fr !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }
