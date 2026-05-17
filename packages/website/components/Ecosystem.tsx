@@ -21,7 +21,7 @@ export default function Ecosystem() {
           {/* Left */}
           <div>
             <p style={{ fontSize: 11, fontWeight: 500, letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--yellow)", marginBottom: 20 }}>Registry</p>
-            <h2 className="serif" style={{ fontSize: "clamp(24px, 3vw, 36px)", fontWeight: 600, lineHeight: 1.2, letterSpacing: "-0.02em", color: "var(--white)", marginBottom: 20 }}>
+            <h2 className="serif section-heading" style={{ fontSize: "clamp(20px, 3vw, 36px)", fontWeight: 600, lineHeight: 1.2, letterSpacing: "-0.02em", color: "var(--white)", marginBottom: 20 }}>
               The Stellar ecosystem, indexed
             </h2>
             <p style={{ fontSize: 14, color: "var(--text-mid)", lineHeight: 1.75, marginBottom: 32 }}>

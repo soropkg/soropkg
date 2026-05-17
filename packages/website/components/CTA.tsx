@@ -15,7 +15,7 @@ export default function CTA() {
           {/* Left */}
           <div>
             <div style={{ width: 40, height: 2, background: "var(--yellow)", marginBottom: 32 }} />
-            <h2 className="serif" style={{ fontSize: "clamp(26px, 3.5vw, 44px)", fontWeight: 600, lineHeight: 1.1, letterSpacing: "-0.02em", color: "var(--white)", marginBottom: 20 }}>
+            <h2 className="serif section-heading" style={{ fontSize: "clamp(22px, 3.5vw, 44px)", fontWeight: 600, lineHeight: 1.1, letterSpacing: "-0.02em", color: "var(--white)", marginBottom: 20 }}>
               Ready to build<br />on Stellar?
             </h2>
             <p style={{ fontSize: 16, color: "var(--text-mid)", lineHeight: 1.75, marginBottom: 40, maxWidth: 420 }}>

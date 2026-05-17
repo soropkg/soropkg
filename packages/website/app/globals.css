@@ -145,30 +145,65 @@ body {
 @media (max-width: 900px) {
   .grid-2col {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 36px;
     direction: ltr !important;
   }
   .grid-sidebar {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 36px;
   }
   .features-grid {
     grid-template-columns: 1fr 1fr;
   }
+  /* Reduce section vertical padding on tablet */
+  section { padding-top: 72px !important; padding-bottom: 72px !important; }
 }
 
 @media (max-width: 600px) {
+  /* Layout */
   .section-inner { padding: 0 16px; }
   .features-grid { grid-template-columns: 1fr; }
+  .grid-2col { gap: 28px; }
+  .stats-row { gap: 24px; }
+
+  /* Nav — hide text links, keep GitHub */
   .nav-links a:not(:last-child) { display: none; }
-  .grid-2col { gap: 32px; }
-  .stats-row { gap: 28px; }
+
+  /* Reduce ALL section vertical padding aggressively */
+  section { padding-top: 56px !important; padding-bottom: 56px !important; }
+
+  /* Hero — smaller font, remove forced line breaks */
+  .hero-title { font-size: 32px !important; line-height: 1.12 !important; }
+  .hero-title br { display: none; }
+  .hero-subtitle { font-size: 15px !important; }
+  .hero-label { font-size: 10px !important; }
+
+  /* Section headings */
+  .section-heading br { display: none; }
+
+  /* Install command */
+  .install-cmd { width: 100%; }
+  .install-cmd code { font-size: 12px !important; }
+
+  /* Hero section — tighter padding on mobile */
+  .hero-section { padding: 80px 16px 56px !important; min-height: auto !important; }
+
+  /* Buttons fill width on small screens */
+  .btn-row { flex-direction: column; }
+  .btn-row a { justify-content: center; text-align: center; }
+
+  /* Stats */
+  .stats-row { gap: 20px; }
+
+  /* Ecosystem table — tighter */
   .eco-table-row,
-  .eco-table-header {
-    grid-template-columns: 1fr 100px 50px;
-  }
-  /* hide Audited column on very small screens */
+  .eco-table-header { grid-template-columns: 1fr 90px 50px; padding: 12px 14px; }
   .eco-table-row > *:last-child,
   .eco-table-header > *:last-child { display: none; }
-  .install-cmd code { font-size: 13px; }
+
+  /* HowItWorks steps — smaller step number */
+  .step-num { font-size: 32px !important; }
+
+  /* Terminal blocks — don't overflow */
+  pre { font-size: 11px !important; }
 }

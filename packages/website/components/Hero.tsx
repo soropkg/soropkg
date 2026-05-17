@@ -8,22 +8,21 @@ export default function Hero() {
   const copy = () => { navigator.clipboard.writeText(cmd); setCopied(true); setTimeout(() => setCopied(false), 2000); };
 
   return (
-    <section style={{ minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "100px 24px 80px", position: "relative", overflow: "hidden" }}>
+    <section className="hero-section" style={{ minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "100px 24px 80px", position: "relative", overflow: "hidden" }}>
       <div className="dot-texture" style={{ position: "absolute", inset: 0, pointerEvents: "none", opacity: 0.6 }} />
       <div style={{ position: "absolute", top: "30%", left: "50%", transform: "translate(-50%, -50%)", width: 600, height: 300, background: "radial-gradient(ellipse, rgba(253,218,36,0.06) 0%, transparent 70%)", pointerEvents: "none" }} />
 
       <div style={{ maxWidth: 760, textAlign: "center", position: "relative", width: "100%" }}>
-        <p style={{ fontSize: 11, fontWeight: 500, letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--yellow)", marginBottom: 28 }}>
+        <p className="hero-label" style={{ fontSize: 11, fontWeight: 500, letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--yellow)", marginBottom: 28 }}>
           Built for the Stellar ecosystem
         </p>
 
-        <h1 className="serif" style={{ fontSize: "clamp(36px, 6.5vw, 80px)", fontWeight: 600, lineHeight: 1.05, letterSpacing: "-0.02em", color: "var(--white)", marginBottom: 28 }}>
-          The package manager<br />
-          for{" "}<em style={{ fontStyle: "italic", color: "var(--yellow)" }}>Soroban</em>{" "}
+        <h1 className="serif hero-title" style={{ fontSize: "clamp(28px, 6.5vw, 80px)", fontWeight: 600, lineHeight: 1.08, letterSpacing: "-0.02em", color: "var(--white)", marginBottom: 28 }}>
+          The package manager for{" "}<em style={{ fontStyle: "italic", color: "var(--yellow)" }}>Soroban</em>{" "}
           smart contracts
         </h1>
 
-        <p style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: "clamp(15px, 2vw, 17px)", lineHeight: 1.75, color: "var(--text-mid)", maxWidth: 560, margin: "0 auto 48px" }}>
+        <p className="hero-subtitle" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: "clamp(14px, 2vw, 17px)", lineHeight: 1.75, color: "var(--text-mid)", maxWidth: 560, margin: "0 auto 48px" }}>
           Inspect live on-chain interfaces, manage contract dependencies,
           and generate typed TypeScript clients — all from one CLI.
         </p>

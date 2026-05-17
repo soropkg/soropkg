@@ -16,7 +16,7 @@ export default function Features() {
       <div className="section-inner">
         <div style={{ marginBottom: 64, maxWidth: 560 }}>
           <p style={{ fontSize: 11, fontWeight: 500, letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--yellow)", marginBottom: 20 }}>Features</p>
-          <h2 className="serif" style={{ fontSize: "clamp(26px, 3.5vw, 44px)", fontWeight: 600, lineHeight: 1.15, letterSpacing: "-0.02em", color: "var(--white)" }}>
+          <h2 className="serif section-heading" style={{ fontSize: "clamp(22px, 3.5vw, 44px)", fontWeight: 600, lineHeight: 1.15, letterSpacing: "-0.02em", color: "var(--white)" }}>
             A complete toolchain<br />for Soroban development
           </h2>
         </div>

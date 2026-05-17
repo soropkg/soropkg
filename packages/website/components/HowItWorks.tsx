@@ -62,7 +62,7 @@ export default function HowItWorks() {
       <div className="section-inner">
         <div style={{ marginBottom: 72, maxWidth: 480 }}>
           <p style={{ fontSize: 11, fontWeight: 500, letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--yellow)", marginBottom: 20 }}>How it works</p>
-          <h2 className="serif" style={{ fontSize: "clamp(26px, 3.5vw, 44px)", fontWeight: 600, lineHeight: 1.15, letterSpacing: "-0.02em", color: "var(--white)" }}>
+          <h2 className="serif section-heading" style={{ fontSize: "clamp(22px, 3.5vw, 44px)", fontWeight: 600, lineHeight: 1.15, letterSpacing: "-0.02em", color: "var(--white)" }}>
             From on-chain to your IDE<br />in three steps
           </h2>
         </div>
